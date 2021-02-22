@@ -40,7 +40,6 @@ app.get(
   }
 );
 
-// 아래 내용을 추가해주자!
 app.use('/sign/join', joinRouter);        // 회원가입
 app.use('/sign/login', loginRouter);      // 로그인
 app.use('/sign/logout', logoutRouter);    // 로그아웃
