@@ -19,16 +19,8 @@ searchRouter.get(
     "/",
     (req: express.Request, res: express.Response, next: express.NextFunction) => {        
         console.log('search get')
-        axios.post('/board/search', testData)
-    }
-);
-
-searchRouter.post(
-    '/',
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const reqData = req.body
-        const limit: any = reqData.count
-        const offset: any = (reqData.page as any - 1)*10
+        const limit: any = testData.count
+        const offset: any = (testData.page as any - 1)*10
         const sql =     `SELECT * 
                         FROM board
                         WHERE DELETE_DT IS NULL

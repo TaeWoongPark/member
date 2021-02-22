@@ -9,9 +9,9 @@ export const joinRouter = express.Router()
  * test
  */
 const data = {
-    userid : 'test',
+    userid : 'test111',
     password : '1q2w3e4r.d',
-    name : 'TEST'
+    name : 'TEST111'
 }
 
 joinRouter.get(
@@ -36,6 +36,7 @@ joinRouter.post(
         const user = new User(data);
         const sql = `INSERT INTO user(USERID, PASSWORD, NAME, SALT) VALUES  ("${user.userid}","${user.password}","${user.name}",${user.salt})`;
         conn.query(sql, (err, rows) => {
+            res.end()
         })
     }
 );

@@ -19,14 +19,7 @@ loginRouter.get(
     '/',
     (req: express.Request, res: express.Response, next: express.NextFunction) => {        
         console.log('login get')
-        axios.post('/sign/login', testData)
-    }
-);
-
-loginRouter.post(
-    '/',
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const body = req.body
+        const body = testData
         const data = {
             userid : body.userid as string,
             password : body.password as string,
@@ -56,6 +49,7 @@ loginRouter.post(
             }else{
                 console.log('로그인 실패...')
             }
+            res.end()
         })
     }
 );

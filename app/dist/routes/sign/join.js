@@ -13,9 +13,9 @@ exports.joinRouter = express_1.default.Router();
  * test
  */
 const data = {
-    userid: 'test',
+    userid: 'test111',
     password: '1q2w3e4r.d',
-    name: 'TEST'
+    name: 'TEST111'
 };
 exports.joinRouter.get('/', (req, res, next) => {
     console.log('join get');
@@ -31,5 +31,6 @@ exports.joinRouter.post('/', (req, res, next) => {
     const user = new User_1.User(data);
     const sql = `INSERT INTO user(USERID, PASSWORD, NAME, SALT) VALUES  ("${user.userid}","${user.password}","${user.name}",${user.salt})`;
     maria_1.conn.query(sql, (err, rows) => {
+        res.end();
     });
 });

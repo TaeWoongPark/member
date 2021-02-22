@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchRouter = void 0;
 const express_1 = __importDefault(require("express"));
-const axios_1 = __importDefault(require("axios"));
 const maria_1 = require("../../maria");
 const Board_1 = require("../../model/board/Board");
 exports.searchRouter = express_1.default.Router();
@@ -18,12 +17,8 @@ const testData = {
 };
 exports.searchRouter.get("/", (req, res, next) => {
     console.log('search get');
-    axios_1.default.post('/board/search', testData);
-});
-exports.searchRouter.post('/', (req, res, next) => {
-    const reqData = req.body;
-    const limit = reqData.count;
-    const offset = (reqData.page - 1) * 10;
+    const limit = testData.count;
+    const offset = (testData.page - 1) * 10;
     const sql = `SELECT * 
                         FROM board
                         WHERE DELETE_DT IS NULL

@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.detailRouter = void 0;
 const express_1 = __importDefault(require("express"));
-const axios_1 = __importDefault(require("axios"));
 const maria_1 = require("../../maria");
 exports.detailRouter = express_1.default.Router();
 /**
@@ -16,11 +15,7 @@ const testData = {
 };
 exports.detailRouter.get('/', (req, res, next) => {
     console.log('detail get');
-    axios_1.default.post('/board/detail', testData);
-});
-exports.detailRouter.post('/', (req, res, next) => {
-    const reqData = req.body;
-    const sql = `SELECT	* FROM board WHERE ID =${reqData.id}`;
+    const sql = `SELECT	* FROM board WHERE ID =${testData.id}`;
     maria_1.conn.query(sql, (err, rows) => {
         const result = rows[0];
         if (result === undefined) {

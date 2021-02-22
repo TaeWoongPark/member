@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginRouter = void 0;
 const express_1 = __importDefault(require("express"));
-const axios_1 = __importDefault(require("axios"));
 const maria_1 = require("../../maria");
 const User_1 = require("../../model/user/User");
 exports.loginRouter = express_1.default.Router();
@@ -19,10 +18,7 @@ const testData = {
 };
 exports.loginRouter.get('/', (req, res, next) => {
     console.log('login get');
-    axios_1.default.post('/sign/login', testData);
-});
-exports.loginRouter.post('/', (req, res, next) => {
-    const body = req.body;
+    const body = testData;
     const data = {
         userid: body.userid,
         password: body.password,
@@ -51,5 +47,6 @@ exports.loginRouter.post('/', (req, res, next) => {
         else {
             console.log('로그인 실패...');
         }
+        res.end();
     });
 });

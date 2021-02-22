@@ -17,15 +17,7 @@ detailRouter.get(
     '/',
     (req: express.Request, res: express.Response, next: express.NextFunction) => {        
         console.log('detail get')
-        axios.post('/board/detail', testData)
-    }
-);
-
-detailRouter.post(
-    '/', 
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        const reqData = req.body
-        const sql = `SELECT	* FROM board WHERE ID =${reqData.id}`;
+        const sql = `SELECT	* FROM board WHERE ID =${testData.id}`;
 
         conn.query(sql, (err, rows) => {
             const result : undefined | any = rows[0]
@@ -46,5 +38,6 @@ detailRouter.post(
             }
             res.end()
         })
+
     }
 );
